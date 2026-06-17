@@ -1126,7 +1126,12 @@ function formatTime(t) {
 }
 
 function isAdminProfile(info = {}) {
-  const text = [info.position, info.dept, info.name]
+  if (info.canApprove === true) return true;
+  const explicit = String(info.canApprove || '').trim().toLowerCase();
+  if (['true', 'yes', 'y', '1', 'อนุมัติได้'].includes(explicit)) return true;
+  if (['false', 'no', 'n', '0', 'อนุมัติไม่ได้'].includes(explicit)) return false;
+
+  const text = [info.role, info.position, info.dept, info.name]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
