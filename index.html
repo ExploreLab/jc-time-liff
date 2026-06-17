@@ -1022,7 +1022,24 @@ function thaiDate(d) {
   const dt = new Date(d);
   return `${dt.getDate()} ${THAI_MONTHS[dt.getMonth()]} ${dt.getFullYear() + 543}`;
 }
-function formatTime(t) { return t ? t.substring(0,5) : '—'; }
+function formatTime(t) {
+  if (!t) return '—';
+  const str = String(t).trim();
+  const match = str.match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
+  if (match) return `${match[1].padStart(2, '0')}:${match[2]}`;
+
+  const dt = new Date(str);
+  if (!Number.isNaN(dt.getTime())) {
+    return dt.toLocaleTimeString('th-TH', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Bangkok',
+    });
+  }
+
+  return str.slice(0, 5);
+}
 
 function showToast(msg, duration = 2800) {
   const el = document.getElementById('toast');
