@@ -590,6 +590,66 @@
     .ri-body { flex: 1; }
     .ri-title { font-size: 13px; font-weight: 600; color: var(--text); }
     .ri-sub   { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+    .approval-card { display: none; }
+    .approval-card.show { display: block; }
+    .approval-section + .approval-section { margin-top: 14px; }
+    .approval-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .approval-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .approval-count {
+      min-width: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--surface2);
+      color: var(--text-2);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .approval-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .approval-item:last-child { border-bottom: none; }
+    .approval-meta {
+      color: var(--text-3);
+      font-size: 11px;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .approval-reason {
+      margin-top: 7px;
+      color: var(--text-2);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .approval-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .approval-btn {
+      border: none;
+      border-radius: 9px;
+      padding: 9px 10px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .approval-btn.approve { background: #d5f1e7; color: var(--accent-dark); }
+    .approval-btn.reject { background: #fdd9d9; color: var(--danger-dark); }
+    .approval-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
     /* ─── Loading Overlay ──────────────────────────────── */
     #loading-overlay {
@@ -942,6 +1002,29 @@
           <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">กำลังโหลด...</div>
         </div>
       </div>
+
+      <!-- Admin approvals -->
+      <div class="card approval-card" id="admin-approval-card">
+        <div class="card-title">รายการรออนุมัติ</div>
+        <div class="approval-section">
+          <div class="approval-head">
+            <div class="approval-title">คำขอลางาน</div>
+            <div class="approval-count" id="pending-leave-count">0</div>
+          </div>
+          <div id="pending-leave-list">
+            <div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>
+          </div>
+        </div>
+        <div class="approval-section">
+          <div class="approval-head">
+            <div class="approval-title">คำขอ OT</div>
+            <div class="approval-count" id="pending-ot-count">0</div>
+          </div>
+          <div id="pending-ot-list">
+            <div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1011,6 +1094,7 @@ const state = {
   checkedInToday: false,
   checkedOutToday: false,
   checkInTime: null,
+  isAdmin: false,
 };
 
 /* ─── Helpers ───────────────────────────────────────── */
@@ -1039,6 +1123,14 @@ function formatTime(t) {
   }
 
   return str.slice(0, 5);
+}
+
+function isAdminProfile(info = {}) {
+  const text = [info.position, info.dept, info.name]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  return /(admin|hr|manager|cto|ceo|หัวหน้า|ผู้จัดการ|ฝ่ายบุคคล)/i.test(text);
 }
 
 function showToast(msg, duration = 2800) {
@@ -1420,6 +1512,105 @@ async function loadRequests() {
       <span class="badge ${badge}">${r.status}</span>
     </div>`;
   }).join('');
+
+  if (state.isAdmin) loadAdminApprovals();
+}
+
+async function loadAdminApprovals() {
+  const card = document.getElementById('admin-approval-card');
+  if (!card) return;
+  card.classList.add('show');
+
+  const leaveList = document.getElementById('pending-leave-list');
+  const otList = document.getElementById('pending-ot-list');
+  leaveList.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>';
+  otList.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>';
+
+  try {
+    const [leaveData, otData] = await Promise.all([
+      api('getPendingLeave', { userId: state.userId }),
+      api('getPendingOT', { userId: state.userId }),
+    ]);
+    const leaves = leaveData.requests || [];
+    const ots = otData.requests || [];
+    document.getElementById('pending-leave-count').textContent = leaves.length;
+    document.getElementById('pending-ot-count').textContent = ots.length;
+    renderPendingLeaves(leaves);
+    renderPendingOT(ots);
+  } catch (e) {
+    console.warn('loadAdminApprovals failed:', e);
+    leaveList.innerHTML = '<div style="color:var(--danger);font-size:13px;padding:8px 0;">โหลดรายการลางานไม่ได้</div>';
+    otList.innerHTML = '<div style="color:var(--danger);font-size:13px;padding:8px 0;">โหลดรายการ OT ไม่ได้</div>';
+  }
+}
+
+function renderPendingLeaves(items) {
+  const el = document.getElementById('pending-leave-list');
+  if (!items.length) {
+    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">ไม่มีคำขอลางานที่รออนุมัติ</div>';
+    return;
+  }
+  el.innerHTML = items.map(r => `<div class="approval-item">
+    <div class="ri-title">${r.userName || '—'} · ${r.leaveType || 'ลา'}</div>
+    <div class="approval-meta">${r.dept || '—'} · ${thaiDate(r.startDate)} ถึง ${thaiDate(r.endDate)} · ${r.days || 1} วัน</div>
+    ${r.reason ? `<div class="approval-reason">${r.reason}</div>` : ''}
+    <div class="approval-actions">
+      <button class="approval-btn approve" onclick="decideRequest('leave','${r.leaveId}','approve',this)">อนุมัติ</button>
+      <button class="approval-btn reject" onclick="decideRequest('leave','${r.leaveId}','reject',this)">ปฏิเสธ</button>
+    </div>
+  </div>`).join('');
+}
+
+function renderPendingOT(items) {
+  const el = document.getElementById('pending-ot-list');
+  if (!items.length) {
+    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">ไม่มีคำขอ OT ที่รออนุมัติ</div>';
+    return;
+  }
+  el.innerHTML = items.map(r => `<div class="approval-item">
+    <div class="ri-title">${r.userName || '—'} · OT ${formatTime(r.startTime)}-${formatTime(r.endTime)}</div>
+    <div class="approval-meta">${r.dept || '—'} · ${thaiDate(r.date)}</div>
+    ${r.purpose ? `<div class="approval-reason">${r.purpose}</div>` : ''}
+    <div class="approval-actions">
+      <button class="approval-btn approve" onclick="decideRequest('ot','${r.otId}','approve',this)">อนุมัติ</button>
+      <button class="approval-btn reject" onclick="decideRequest('ot','${r.otId}','reject',this)">ปฏิเสธ</button>
+    </div>
+  </div>`).join('');
+}
+
+async function decideRequest(type, id, decision, btn) {
+  if (!state.isAdmin) { showToast('ไม่มีสิทธิ์อนุมัติ'); return; }
+  const isReject = decision === 'reject';
+  const note = isReject ? prompt('เหตุผลที่ปฏิเสธ (ไม่บังคับ)') || '' : '';
+  const action =
+    type === 'leave'
+      ? (isReject ? 'rejectLeave' : 'approveLeave')
+      : (isReject ? 'rejectOT' : 'approveOT');
+  const payload = {
+    action,
+    adminUserId: state.userId,
+    approvedBy: state.displayName,
+    note,
+  };
+  if (type === 'leave') payload.leaveId = id;
+  if (type === 'ot') payload.otId = id;
+
+  const parent = btn.closest('.approval-actions');
+  parent?.querySelectorAll('button').forEach(b => b.disabled = true);
+  try {
+    const res = await postApi(payload);
+    if (res.success) {
+      showToast(isReject ? 'ปฏิเสธคำขอแล้ว' : 'อนุมัติคำขอแล้ว');
+      await loadAdminApprovals();
+      await loadRequests();
+      return;
+    }
+    showToast('เกิดข้อผิดพลาด: ' + (res.message || 'ไม่สามารถบันทึกได้'));
+  } catch (e) {
+    console.warn('decideRequest failed:', e);
+    showToast('ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้');
+  }
+  parent?.querySelectorAll('button').forEach(b => b.disabled = false);
 }
 
 /* ─── Set today's date in forms ─────────────────────── */
@@ -1446,6 +1637,8 @@ function showApp() {
       const userInfo = await api('getUserInfo', { userId: state.userId });
       state.dept     = userInfo.dept     || '';
       state.position = userInfo.position || '';
+      state.isAdmin  = isAdminProfile(userInfo);
+      document.getElementById('admin-approval-card')?.classList.toggle('show', state.isAdmin);
       document.getElementById('home-dept').textContent =
         [state.position, state.dept].filter(Boolean).join(' · ') || '—';
     } catch (e) { console.warn('getUserInfo failed:', e); }
