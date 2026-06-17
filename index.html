@@ -974,7 +974,7 @@
 ═══════════════════════════════════════════════════════ */
 // LIFF must run from a stable HTTPS URL that exactly matches the Endpoint URL.
 // Keep GAS as the backend API and host this HTML outside Apps Script.
-const GAS_WEB_APP_URL = 'PASTE_GAS_WEB_APP_EXEC_URL_HERE';
+const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxssy8PioLv8EFHHEIVagE3GdrWOXDYtMUdPOFoe3W4Zg8dGRagcJJKiRs9jvJ5s0iA/exec';
 const GAS_INJECTED_API_URL = '<?= API_URL ?>';  // injected only when served by GAS preview
 const API_URL = GAS_INJECTED_API_URL.includes('<?=')
   ? GAS_WEB_APP_URL
