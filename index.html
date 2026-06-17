@@ -1442,6 +1442,8 @@ async function initApp() {
     if (el) el.textContent = t;
   };
 
+<<<<<<< HEAD
+=======
   // Safety: บังคับแสดงแอปหลัง 30 วินาที ถ้า LIFF ค้าง
   const safetyTimer = setTimeout(() => {
     state.userId      = 'TEST_USER_001';
@@ -1451,6 +1453,7 @@ async function initApp() {
     showApp();
   }, 30000);
 
+>>>>>>> 1a9ce37334e5666b349ee7c343ec9fee81459429
   try {
     assertConfigured();
     assertLiffEndpointHost();
@@ -1459,7 +1462,10 @@ async function initApp() {
       liff.init({ liffId: LIFF_ID }),
       new Promise((_, rej) => setTimeout(() => rej(new Error('liff.init timeout 15s')), 15000))
     ]);
+<<<<<<< HEAD
+=======
     clearTimeout(safetyTimer);
+>>>>>>> 1a9ce37334e5666b349ee7c343ec9fee81459429
     setStatus('กำลังตรวจสอบ session...');
 
     if (!liff.isLoggedIn()) {
@@ -1478,6 +1484,18 @@ async function initApp() {
         `<img src="${state.pictureUrl}" alt="avatar" />`;
     }
 
+<<<<<<< HEAD
+    showApp();
+  } catch (e) {
+    const errMsg = e && e.message ? e.message : String(e);
+    console.warn('LIFF init failed:', errMsg);
+    setStatus(
+      'LIFF error: ' + errMsg +
+      ' | ตรวจสอบ LIFF Endpoint URL ให้ตรงกับ GitHub Pages URL: ' +
+      location.origin + location.pathname
+    );
+  }
+=======
   } catch (e) {
     clearTimeout(safetyTimer);
     const errMsg = e && e.message ? e.message : String(e);
@@ -1491,6 +1509,7 @@ async function initApp() {
   }
 
   showApp();
+>>>>>>> 1a9ce37334e5666b349ee7c343ec9fee81459429
 }
 
 initApp();
