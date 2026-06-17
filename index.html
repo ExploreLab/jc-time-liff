@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
   <script src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
 
   <style>
-    /* ─── Reset & Base ─────────────────────────────────── */
+    /* â”€â”€â”€ Reset & Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -51,7 +51,7 @@
       overscroll-behavior: none;
     }
 
-    /* ─── App Shell ────────────────────────────────────── */
+    /* â”€â”€â”€ App Shell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #app {
       width: 100%;
       height: 100vh;
@@ -63,7 +63,7 @@
       overflow: hidden;
     }
 
-    /* ─── Pages ────────────────────────────────────────── */
+    /* â”€â”€â”€ Pages â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .page {
       flex: 1;
       overflow-y: auto;
@@ -75,7 +75,7 @@
     }
     .page.active { display: flex; }
 
-    /* ─── Header ───────────────────────────────────────── */
+    /* â”€â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .header {
       background: var(--brand);
       padding: calc(env(safe-area-inset-top, 20px) + 16px) 20px 20px;
@@ -134,7 +134,7 @@
       margin-top: 2px;
     }
 
-    /* ─── Page Header (small) ──────────────────────────── */
+    /* â”€â”€â”€ Page Header (small) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .page-header {
       background: var(--brand);
       padding: calc(env(safe-area-inset-top, 20px) + 16px) 20px 16px;
@@ -162,7 +162,7 @@
       color: #fff;
     }
 
-    /* ─── Scroll Content ───────────────────────────────── */
+    /* â”€â”€â”€ Scroll Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .scroll-content {
       flex: 1;
       padding: 16px;
@@ -171,7 +171,7 @@
       gap: 14px;
     }
 
-    /* ─── Card ─────────────────────────────────────────── */
+    /* â”€â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .card {
       background: var(--surface);
       border-radius: var(--radius-lg);
@@ -187,7 +187,7 @@
       margin-bottom: 10px;
     }
 
-    /* ─── Check-in Card ────────────────────────────────── */
+    /* â”€â”€â”€ Check-in Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .checkin-hero {
       background: var(--brand);
       border-radius: var(--radius-lg);
@@ -306,7 +306,7 @@
     }
     .btn-ghost:active { background: rgba(255,255,255,0.08); }
 
-    /* ─── Summary Grid ─────────────────────────────────── */
+    /* â”€â”€â”€ Summary Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .summary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -333,7 +333,7 @@
     .sc-value.blue  { color: var(--info-dark); }
     .sc-value.red   { color: var(--danger-dark); }
 
-    /* ─── Quick Actions ────────────────────────────────── */
+    /* â”€â”€â”€ Quick Actions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .qa-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -362,7 +362,7 @@
     .qa-btn-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
     .qa-btn-sub { font-size: 11px; color: var(--text-3); }
 
-    /* ─── Recent List ──────────────────────────────────── */
+    /* â”€â”€â”€ Recent List â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .recent-item {
       display: flex;
       align-items: center;
@@ -382,7 +382,7 @@
     .ri-time { font-size: 13px; font-weight: 500; color: var(--text); }
     .ri-loc { font-size: 11px; color: var(--text-3); margin-top: 2px; }
 
-    /* ─── Badges ───────────────────────────────────────── */
+    /* â”€â”€â”€ Badges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .badge {
       font-size: 11px;
       font-weight: 600;
@@ -399,7 +399,7 @@
     .badge-approved{ background: #d5f1e7; color: var(--accent-dark); }
     .badge-rejected{ background: #fdd9d9; color: var(--danger-dark); }
 
-    /* ─── Section Label ────────────────────────────────── */
+    /* â”€â”€â”€ Section Label â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .section-label {
       font-size: 11px;
       font-weight: 700;
@@ -409,7 +409,7 @@
       padding: 0 2px;
     }
 
-    /* ─── History Page ─────────────────────────────────── */
+    /* â”€â”€â”€ History Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .month-nav {
       display: flex;
       align-items: center;
@@ -473,7 +473,7 @@
     .att-table tr:last-child td { border-bottom: none; }
     .att-table td.muted { color: var(--text-3); font-size: 12px; }
 
-    /* ─── Request / Leave Form ─────────────────────────── */
+    /* â”€â”€â”€ Request / Leave Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .tab-switch {
       display: flex;
       gap: 8px;
@@ -591,7 +591,7 @@
     .ri-title { font-size: 13px; font-weight: 600; color: var(--text); }
     .ri-sub   { font-size: 11px; color: var(--text-3); margin-top: 2px; }
 
-    /* ─── Loading Overlay ──────────────────────────────── */
+    /* â”€â”€â”€ Loading Overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #loading-overlay {
       position: absolute;
       inset: 0;
@@ -624,7 +624,7 @@
       color: rgba(255,255,255,0.55);
     }
 
-    /* ─── Toast ────────────────────────────────────────── */
+    /* â”€â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #toast {
       position: absolute;
       bottom: calc(80px + var(--safe-bottom));
@@ -648,7 +648,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* ─── Bottom Nav ───────────────────────────────────── */
+    /* â”€â”€â”€ Bottom Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .bottom-nav {
       position: absolute;
       bottom: 0;
@@ -691,7 +691,7 @@
       border: 2px solid var(--surface);
     }
 
-    /* ─── Clock Animation ──────────────────────────────── */
+    /* â”€â”€â”€ Clock Animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #live-time { font-variant-numeric: tabular-nums; }
   </style>
 </head>
@@ -700,30 +700,30 @@
 
   <!-- Loading -->
   <div id="loading-overlay">
-    <div class="loading-logo">JC<span>·</span>Time</div>
+    <div class="loading-logo">JC<span>Â·</span>Time</div>
     <div class="spinner"></div>
-    <div class="loading-text">กำลังโหลดข้อมูล...</div>
+    <div class="loading-text">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”à¸‚à¹‰à¸­à¸¡à¸¹à¸¥...</div>
   </div>
 
   <!-- Toast -->
   <div id="toast"></div>
 
-  <!-- ══════════════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PAGE: HOME
-  ══════════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <div id="page-home" class="page active">
     <div class="header">
       <div class="header-row">
-        <div class="logo">JC<span>·</span>Time</div>
-        <button class="header-icon-btn" onclick="showToast('🔔 ไม่มีการแจ้งเตือนใหม่')">
+        <div class="logo">JC<span>Â·</span>Time</div>
+        <button class="header-icon-btn" onclick="showToast('ðŸ”” à¹„à¸¡à¹ˆà¸¡à¸µà¸à¸²à¸£à¹à¸ˆà¹‰à¸‡à¹€à¸•à¸·à¸­à¸™à¹ƒà¸«à¸¡à¹ˆ')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         </button>
       </div>
       <div class="user-row">
-        <div class="avatar" id="home-avatar">สม</div>
+        <div class="avatar" id="home-avatar">à¸ªà¸¡</div>
         <div>
-          <div class="user-name" id="home-username">กำลังโหลด...</div>
-          <div class="user-dept" id="home-dept">—</div>
+          <div class="user-name" id="home-username">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”...</div>
+          <div class="user-dept" id="home-dept">â€”</div>
         </div>
       </div>
     </div>
@@ -732,88 +732,88 @@
 
       <!-- Check-in Hero -->
       <div class="checkin-hero">
-        <div class="checkin-eyebrow">วันนี้</div>
-        <div class="checkin-date" id="today-date">—</div>
+        <div class="checkin-eyebrow">à¸§à¸±à¸™à¸™à¸µà¹‰</div>
+        <div class="checkin-date" id="today-date">â€”</div>
         <div class="checkin-time-big" id="live-time">--:--</div>
         <div class="checkin-status-label">
           <span class="status-dot" id="status-dot"></span>
-          <span id="checkin-status-text">กำลังตรวจสอบสถานะ...</span>
+          <span id="checkin-status-text">à¸à¸³à¸¥à¸±à¸‡à¸•à¸£à¸§à¸ˆà¸ªà¸­à¸šà¸ªà¸–à¸²à¸™à¸°...</span>
         </div>
         <div class="gps-pill" id="gps-pill">
           <div class="dot"></div>
-          <span>กำลังหาตำแหน่ง GPS... <span class="gps-name" id="gps-name"></span></span>
+          <span>à¸à¸³à¸¥à¸±à¸‡à¸«à¸²à¸•à¸³à¹à¸«à¸™à¹ˆà¸‡ GPS... <span class="gps-name" id="gps-name"></span></span>
         </div>
         <button class="btn-primary" id="btn-checkin" onclick="doCheckIn()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-          เช็คอิน — บันทึกเวลาเข้างาน
+          à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™ â€” à¸šà¸±à¸™à¸—à¸¶à¸à¹€à¸§à¸¥à¸²à¹€à¸‚à¹‰à¸²à¸‡à¸²à¸™
         </button>
         <button class="btn-ghost" id="btn-checkout" onclick="doCheckOut()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          เช็คเอาท์ — บันทึกเวลาออกงาน
+          à¹€à¸Šà¹‡à¸„à¹€à¸­à¸²à¸—à¹Œ â€” à¸šà¸±à¸™à¸—à¸¶à¸à¹€à¸§à¸¥à¸²à¸­à¸­à¸à¸‡à¸²à¸™
         </button>
       </div>
 
       <!-- Monthly Summary -->
       <div>
-        <div class="section-label" style="margin-bottom:10px;">สรุปเดือนนี้</div>
+        <div class="section-label" style="margin-bottom:10px;">à¸ªà¸£à¸¸à¸›à¹€à¸”à¸·à¸­à¸™à¸™à¸µà¹‰</div>
         <div class="summary-grid">
           <div class="summary-chip">
-            <div class="sc-label">มาทำงาน</div>
-            <div class="sc-value green" id="sum-present">—</div>
+            <div class="sc-label">à¸¡à¸²à¸—à¸³à¸‡à¸²à¸™</div>
+            <div class="sc-value green" id="sum-present">â€”</div>
           </div>
           <div class="summary-chip">
-            <div class="sc-label">มาสาย</div>
-            <div class="sc-value amber" id="sum-late">—</div>
+            <div class="sc-label">à¸¡à¸²à¸ªà¸²à¸¢</div>
+            <div class="sc-value amber" id="sum-late">â€”</div>
           </div>
           <div class="summary-chip">
-            <div class="sc-label">วันลาคงเหลือ</div>
-            <div class="sc-value blue" id="sum-leave-bal">—</div>
+            <div class="sc-label">à¸§à¸±à¸™à¸¥à¸²à¸„à¸‡à¹€à¸«à¸¥à¸·à¸­</div>
+            <div class="sc-value blue" id="sum-leave-bal">â€”</div>
           </div>
           <div class="summary-chip">
-            <div class="sc-label">OT รออนุมัติ</div>
-            <div class="sc-value red" id="sum-ot-pending">—</div>
+            <div class="sc-label">OT à¸£à¸­à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´</div>
+            <div class="sc-value red" id="sum-ot-pending">â€”</div>
           </div>
         </div>
       </div>
 
       <!-- Quick Actions -->
       <div>
-        <div class="section-label" style="margin-bottom:10px;">เมนูด่วน</div>
+        <div class="section-label" style="margin-bottom:10px;">à¹€à¸¡à¸™à¸¹à¸”à¹ˆà¸§à¸™</div>
         <div class="qa-grid">
           <button class="qa-btn" onclick="navTo('request', 'leave')">
             <div class="qa-icon blue">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
             </div>
-            <div class="qa-btn-title">ขอลางาน</div>
-            <div class="qa-btn-sub" id="qa-leave-bal">วันลาคงเหลือ —</div>
+            <div class="qa-btn-title">à¸‚à¸­à¸¥à¸²à¸‡à¸²à¸™</div>
+            <div class="qa-btn-sub" id="qa-leave-bal">à¸§à¸±à¸™à¸¥à¸²à¸„à¸‡à¹€à¸«à¸¥à¸·à¸­ â€”</div>
           </button>
           <button class="qa-btn" onclick="navTo('request', 'ot')">
             <div class="qa-icon amber">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <div class="qa-btn-title">ขอทำ OT</div>
-            <div class="qa-btn-sub" id="qa-ot-pending">รออนุมัติ —</div>
+            <div class="qa-btn-title">à¸‚à¸­à¸—à¸³ OT</div>
+            <div class="qa-btn-sub" id="qa-ot-pending">à¸£à¸­à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´ â€”</div>
           </button>
         </div>
       </div>
 
       <!-- Recent -->
       <div class="card">
-        <div class="card-title">รายการล่าสุด</div>
+        <div class="card-title">à¸£à¸²à¸¢à¸à¸²à¸£à¸¥à¹ˆà¸²à¸ªà¸¸à¸”</div>
         <div id="recent-list">
-          <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">กำลังโหลด...</div>
+          <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”...</div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PAGE: HISTORY
-  ══════════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <div id="page-history" class="page">
     <div class="page-header">
-      <div class="logo" style="margin-bottom:4px;">JC<span style="color:var(--accent);">·</span>Time</div>
+      <div class="logo" style="margin-bottom:4px;">JC<span style="color:var(--accent);">Â·</span>Time</div>
     </div>
 
     <div class="scroll-content">
@@ -821,43 +821,43 @@
         <button class="month-arrow" onclick="changeMonth(-1)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <div class="month-label" id="hist-month-label">—</div>
+        <div class="month-label" id="hist-month-label">â€”</div>
         <button class="month-arrow" onclick="changeMonth(1)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
 
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-num present" id="h-present">—</div><div class="stat-lbl">วันมาทำงาน</div></div>
-        <div class="stat-card"><div class="stat-num late" id="h-late">—</div><div class="stat-lbl">ครั้งมาสาย</div></div>
-        <div class="stat-card"><div class="stat-num leave" id="h-leave">—</div><div class="stat-lbl">วันลา</div></div>
-        <div class="stat-card"><div class="stat-num absent" id="h-absent">—</div><div class="stat-lbl">วันขาดงาน</div></div>
+        <div class="stat-card"><div class="stat-num present" id="h-present">â€”</div><div class="stat-lbl">à¸§à¸±à¸™à¸¡à¸²à¸—à¸³à¸‡à¸²à¸™</div></div>
+        <div class="stat-card"><div class="stat-num late" id="h-late">â€”</div><div class="stat-lbl">à¸„à¸£à¸±à¹‰à¸‡à¸¡à¸²à¸ªà¸²à¸¢</div></div>
+        <div class="stat-card"><div class="stat-num leave" id="h-leave">â€”</div><div class="stat-lbl">à¸§à¸±à¸™à¸¥à¸²</div></div>
+        <div class="stat-card"><div class="stat-num absent" id="h-absent">â€”</div><div class="stat-lbl">à¸§à¸±à¸™à¸‚à¸²à¸”à¸‡à¸²à¸™</div></div>
       </div>
 
       <div class="card" style="padding:14px 12px;">
         <table class="att-table">
           <thead>
             <tr>
-              <th style="width:60px;">วันที่</th>
-              <th>เข้างาน</th>
-              <th>ออกงาน</th>
-              <th>สถานะ</th>
+              <th style="width:60px;">à¸§à¸±à¸™à¸—à¸µà¹ˆ</th>
+              <th>à¹€à¸‚à¹‰à¸²à¸‡à¸²à¸™</th>
+              <th>à¸­à¸­à¸à¸‡à¸²à¸™</th>
+              <th>à¸ªà¸–à¸²à¸™à¸°</th>
             </tr>
           </thead>
           <tbody id="hist-tbody">
-            <tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">กำลังโหลด...</td></tr>
+            <tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”...</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        PAGE: REQUEST
-  ══════════════════════════════════════════════════ -->
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <div id="page-request" class="page">
     <div class="page-header">
-      <div class="logo" style="margin-bottom:4px;">JC<span style="color:var(--accent);">·</span>Time</div>
+      <div class="logo" style="margin-bottom:4px;">JC<span style="color:var(--accent);">Â·</span>Time</div>
     </div>
 
     <div class="scroll-content">
@@ -865,81 +865,81 @@
       <!-- Tab switch -->
       <div class="tab-switch">
         <button class="tab-switch-btn active" id="tab-leave-btn" onclick="switchForm('leave')">
-          📋 ขอลางาน
+          ðŸ“‹ à¸‚à¸­à¸¥à¸²à¸‡à¸²à¸™
         </button>
         <button class="tab-switch-btn" id="tab-ot-btn" onclick="switchForm('ot')">
-          ⏰ ขอทำ OT
+          â° à¸‚à¸­à¸—à¸³ OT
         </button>
       </div>
 
       <!-- Leave Form -->
       <div class="form-section active card" id="form-leave">
         <div class="form-field">
-          <div class="form-label">ประเภทการลา</div>
+          <div class="form-label">à¸›à¸£à¸°à¹€à¸ à¸—à¸à¸²à¸£à¸¥à¸²</div>
           <div class="leave-chips" id="leave-chips">
-            <button class="leave-chip active" data-value="ลาป่วย" onclick="selectChip(this,'leave-chips')">ลาป่วย</button>
-            <button class="leave-chip" data-value="ลากิจ" onclick="selectChip(this,'leave-chips')">ลากิจ</button>
-            <button class="leave-chip" data-value="ลาพักร้อน" onclick="selectChip(this,'leave-chips')">ลาพักร้อน</button>
-            <button class="leave-chip" data-value="ลาคลอด" onclick="selectChip(this,'leave-chips')">ลาคลอด</button>
+            <button class="leave-chip active" data-value="à¸¥à¸²à¸›à¹ˆà¸§à¸¢" onclick="selectChip(this,'leave-chips')">à¸¥à¸²à¸›à¹ˆà¸§à¸¢</button>
+            <button class="leave-chip" data-value="à¸¥à¸²à¸à¸´à¸ˆ" onclick="selectChip(this,'leave-chips')">à¸¥à¸²à¸à¸´à¸ˆ</button>
+            <button class="leave-chip" data-value="à¸¥à¸²à¸žà¸±à¸à¸£à¹‰à¸­à¸™" onclick="selectChip(this,'leave-chips')">à¸¥à¸²à¸žà¸±à¸à¸£à¹‰à¸­à¸™</button>
+            <button class="leave-chip" data-value="à¸¥à¸²à¸„à¸¥à¸­à¸”" onclick="selectChip(this,'leave-chips')">à¸¥à¸²à¸„à¸¥à¸­à¸”</button>
           </div>
         </div>
         <div class="form-field">
-          <div class="form-label">ช่วงวันที่ลา</div>
+          <div class="form-label">à¸Šà¹ˆà¸§à¸‡à¸§à¸±à¸™à¸—à¸µà¹ˆà¸¥à¸²</div>
           <div class="form-row">
             <div>
-              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">วันเริ่มต้น</div>
+              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">à¸§à¸±à¸™à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™</div>
               <input type="date" class="form-control" id="leave-start" />
             </div>
             <div>
-              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">วันสิ้นสุด</div>
+              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">à¸§à¸±à¸™à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”</div>
               <input type="date" class="form-control" id="leave-end" />
             </div>
           </div>
         </div>
         <div class="form-field">
-          <div class="form-label">เหตุผลการลา</div>
-          <textarea class="form-control" id="leave-reason" placeholder="ระบุเหตุผลโดยสังเขป..."></textarea>
+          <div class="form-label">à¹€à¸«à¸•à¸¸à¸œà¸¥à¸à¸²à¸£à¸¥à¸²</div>
+          <textarea class="form-control" id="leave-reason" placeholder="à¸£à¸°à¸šà¸¸à¹€à¸«à¸•à¸¸à¸œà¸¥à¹‚à¸”à¸¢à¸ªà¸±à¸‡à¹€à¸‚à¸›..."></textarea>
         </div>
         <button class="btn-submit leave-submit" onclick="submitLeave()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          ส่งคำขอลางาน
+          à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­à¸¥à¸²à¸‡à¸²à¸™
         </button>
       </div>
 
       <!-- OT Form -->
       <div class="form-section card" id="form-ot">
         <div class="form-field">
-          <div class="form-label">วันที่ขอทำ OT</div>
+          <div class="form-label">à¸§à¸±à¸™à¸—à¸µà¹ˆà¸‚à¸­à¸—à¸³ OT</div>
           <input type="date" class="form-control" id="ot-date" />
         </div>
         <div class="form-field">
-          <div class="form-label">ช่วงเวลา OT</div>
+          <div class="form-label">à¸Šà¹ˆà¸§à¸‡à¹€à¸§à¸¥à¸² OT</div>
           <div class="form-row">
             <div>
-              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">เริ่มต้น</div>
+              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™</div>
               <input type="time" class="form-control" id="ot-start" />
             </div>
             <div>
-              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">สิ้นสุด</div>
+              <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;">à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”</div>
               <input type="time" class="form-control" id="ot-end" />
             </div>
           </div>
         </div>
         <div class="form-field">
-          <div class="form-label">ลักษณะงานที่ทำ</div>
-          <textarea class="form-control" id="ot-purpose" placeholder="อธิบายงานที่จะทำ OT..."></textarea>
+          <div class="form-label">à¸¥à¸±à¸à¸©à¸“à¸°à¸‡à¸²à¸™à¸—à¸µà¹ˆà¸—à¸³</div>
+          <textarea class="form-control" id="ot-purpose" placeholder="à¸­à¸˜à¸´à¸šà¸²à¸¢à¸‡à¸²à¸™à¸—à¸µà¹ˆà¸ˆà¸°à¸—à¸³ OT..."></textarea>
         </div>
         <button class="btn-submit ot-submit" onclick="submitOT()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          ส่งคำขอ OT
+          à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­ OT
         </button>
       </div>
 
       <!-- Request history -->
       <div class="card">
-        <div class="card-title">คำขอล่าสุด</div>
+        <div class="card-title">à¸„à¸³à¸‚à¸­à¸¥à¹ˆà¸²à¸ªà¸¸à¸”</div>
         <div id="request-list">
-          <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">กำลังโหลด...</div>
+          <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”...</div>
         </div>
       </div>
     </div>
@@ -951,27 +951,27 @@
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </span>
-      หน้าหลัก
+      à¸«à¸™à¹‰à¸²à¸«à¸¥à¸±à¸
     </button>
     <button class="nav-item" id="nav-history" onclick="navigate('history')">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       </span>
-      ประวัติ
+      à¸›à¸£à¸°à¸§à¸±à¸•à¸´
     </button>
     <button class="nav-item nav-badge" id="nav-request" onclick="navigate('request')">
       <span class="nav-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
       </span>
-      คำขอ
+      à¸„à¸³à¸‚à¸­
     </button>
   </nav>
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   CONFIG — แก้ค่านี้ตาม GAS Web App URL ของคุณ
-═══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CONFIG â€” à¹à¸à¹‰à¸„à¹ˆà¸²à¸™à¸µà¹‰à¸•à¸²à¸¡ GAS Web App URL à¸‚à¸­à¸‡à¸„à¸¸à¸“
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 // LIFF must run from a stable HTTPS URL that exactly matches the Endpoint URL.
 // Keep GAS as the backend API and host this HTML outside Apps Script.
 const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxssy8PioLv8EFHHEIVagE3GdrWOXDYtMUdPOFoe3W4Zg8dGRagcJJKiRs9jvJ5s0iA/exec';
@@ -979,7 +979,7 @@ const GAS_INJECTED_API_URL = '<?= API_URL ?>';  // injected only when served by 
 const API_URL = GAS_INJECTED_API_URL.includes('<?=')
   ? GAS_WEB_APP_URL
   : GAS_INJECTED_API_URL;
-const LIFF_ID = '2010425352-5tuNlAOp';          // ← ใส่ LIFF ID จาก LINE Developers
+const LIFF_ID = '2010425352-5tuNlAOp';          // â† à¹ƒà¸ªà¹ˆ LIFF ID à¸ˆà¸²à¸ LINE Developers
 
 function assertConfigured() {
   if (!API_URL || API_URL === 'PASTE_GAS_WEB_APP_EXEC_URL_HERE') {
@@ -995,7 +995,7 @@ function assertLiffEndpointHost() {
   }
 }
 
-/* ─── App State ─────────────────────────────────────── */
+/* â”€â”€â”€ App State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const state = {
   userId: null,
   displayName: '',
@@ -1013,17 +1013,17 @@ const state = {
   checkInTime: null,
 };
 
-/* ─── Helpers ───────────────────────────────────────── */
-const THAI_MONTHS = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
-const THAI_MONTHS_FULL = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
-const THAI_DAYS = ['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'];
+/* â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+const THAI_MONTHS = ['à¸¡.à¸„.','à¸.à¸ž.','à¸¡à¸µ.à¸„.','à¹€à¸¡.à¸¢.','à¸ž.à¸„.','à¸¡à¸´.à¸¢.','à¸.à¸„.','à¸ª.à¸„.','à¸.à¸¢.','à¸•.à¸„.','à¸ž.à¸¢.','à¸˜.à¸„.'];
+const THAI_MONTHS_FULL = ['à¸¡à¸à¸£à¸²à¸„à¸¡','à¸à¸¸à¸¡à¸ à¸²à¸žà¸±à¸™à¸˜à¹Œ','à¸¡à¸µà¸™à¸²à¸„à¸¡','à¹€à¸¡à¸©à¸²à¸¢à¸™','à¸žà¸¤à¸©à¸ à¸²à¸„à¸¡','à¸¡à¸´à¸–à¸¸à¸™à¸²à¸¢à¸™','à¸à¸£à¸à¸Žà¸²à¸„à¸¡','à¸ªà¸´à¸‡à¸«à¸²à¸„à¸¡','à¸à¸±à¸™à¸¢à¸²à¸¢à¸™','à¸•à¸¸à¸¥à¸²à¸„à¸¡','à¸žà¸¤à¸¨à¸ˆà¸´à¸à¸²à¸¢à¸™','à¸˜à¸±à¸™à¸§à¸²à¸„à¸¡'];
+const THAI_DAYS = ['à¸­à¸².','à¸ˆ.','à¸­.','à¸ž.','à¸žà¸¤.','à¸¨.','à¸ª.'];
 
 function thaiDate(d) {
   const dt = new Date(d);
   return `${dt.getDate()} ${THAI_MONTHS[dt.getMonth()]} ${dt.getFullYear() + 543}`;
 }
 function formatTime(t) {
-  if (!t) return '—';
+  if (!t) return 'â€”';
   const str = String(t).trim();
   const match = str.match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
   if (match) return `${match[1].padStart(2, '0')}:${match[2]}`;
@@ -1072,13 +1072,13 @@ function postApi(payload) {
   return fetchWithTimeout(url.toString());
 }
 
-/* ─── GPS ───────────────────────────────────────────── */
+/* â”€â”€â”€ GPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function getGPS() {
   const gpsPromise = new Promise((resolve, reject) => {
-    if (!navigator.geolocation) { reject('GPS ไม่รองรับ'); return; }
+    if (!navigator.geolocation) { reject('GPS à¹„à¸¡à¹ˆà¸£à¸­à¸‡à¸£à¸±à¸š'); return; }
     navigator.geolocation.getCurrentPosition(
       pos => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      err => reject('ไม่สามารถดึง GPS ได้'),
+      err => reject('à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸”à¸¶à¸‡ GPS à¹„à¸”à¹‰'),
       { enableHighAccuracy: true, timeout: 5000 }
     );
   });
@@ -1088,7 +1088,7 @@ function getGPS() {
   return Promise.race([gpsPromise, timeoutPromise]);
 }
 
-/* ─── Navigation ────────────────────────────────────── */
+/* â”€â”€â”€ Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function navigate(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
@@ -1105,7 +1105,7 @@ function navTo(page, tab) {
   if (tab) switchForm(tab);
 }
 
-/* ─── Clock ─────────────────────────────────────────── */
+/* â”€â”€â”€ Clock â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function startClock() {
   function tick() {
     const now = new Date();
@@ -1117,17 +1117,17 @@ function startClock() {
   setInterval(tick, 10000);
 }
 
-/* ─── Home Load ─────────────────────────────────────── */
+/* â”€â”€â”€ Home Load â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 async function loadHome() {
   // Date
   const today = new Date();
   document.getElementById('today-date').textContent =
-    `${THAI_DAYS[today.getDay()]}ที่ ${thaiDate(today)}`;
+    `${THAI_DAYS[today.getDay()]}à¸—à¸µà¹ˆ ${thaiDate(today)}`;
 
   // User info
-  document.getElementById('home-username').textContent = state.displayName || '—';
+  document.getElementById('home-username').textContent = state.displayName || 'â€”';
   document.getElementById('home-dept').textContent =
-    [state.position, state.dept].filter(Boolean).join(' · ') || '—';
+    [state.position, state.dept].filter(Boolean).join(' Â· ') || 'â€”';
   const initials = (state.displayName || 'U').slice(0, 2);
   document.getElementById('home-avatar').textContent = initials;
 
@@ -1137,22 +1137,22 @@ async function loadHome() {
   try {
     const pos = await getGPS();
     state.gpsLat = pos.lat; state.gpsLng = pos.lng;
-    gpsName.textContent = 'กำลังตรวจสอบรัศมี...';
+    gpsName.textContent = 'à¸à¸³à¸¥à¸±à¸‡à¸•à¸£à¸§à¸ˆà¸ªà¸­à¸šà¸£à¸±à¸¨à¸¡à¸µ...';
     // fetch workspace info
     const info = await api('getGpsStatus', { userId: state.userId, lat: pos.lat, lng: pos.lng });
     if (info.inRange) {
       state.gpsInRange = true;
-      gpsName.textContent = info.workplaceName || 'สำนักงาน';
-      gpsEl.querySelector('span').textContent = 'GPS ยืนยันแล้ว — ';
+      gpsName.textContent = info.workplaceName || 'à¸ªà¸³à¸™à¸±à¸à¸‡à¸²à¸™';
+      gpsEl.querySelector('span').textContent = 'GPS à¸¢à¸·à¸™à¸¢à¸±à¸™à¹à¸¥à¹‰à¸§ â€” ';
     } else {
       state.gpsInRange = false;
-      gpsEl.querySelector('span').textContent = 'อยู่นอกรัศมี — ';
-      gpsName.textContent = 'ไม่สามารถเช็คอินได้';
+      gpsEl.querySelector('span').textContent = 'à¸­à¸¢à¸¹à¹ˆà¸™à¸­à¸à¸£à¸±à¸¨à¸¡à¸µ â€” ';
+      gpsName.textContent = 'à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™à¹„à¸”à¹‰';
       gpsEl.style.background = 'rgba(226,75,74,0.15)';
       gpsEl.querySelector('.dot').style.background = '#e24b4a';
     }
   } catch (e) {
-    gpsEl.querySelector('span').textContent = 'ไม่สามารถดึง GPS ได้';
+    gpsEl.querySelector('span').textContent = 'à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸”à¸¶à¸‡ GPS à¹„à¸”à¹‰';
   }
 
   // Attendance status today
@@ -1161,26 +1161,26 @@ async function loadHome() {
     state.checkedInToday = true;
     state.checkInTime = todayData.timeIn;
     document.getElementById('checkin-status-text').textContent =
-      `เช็คอินแล้ว เวลา ${formatTime(todayData.timeIn)}`;
+      `à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™à¹à¸¥à¹‰à¸§ à¹€à¸§à¸¥à¸² ${formatTime(todayData.timeIn)}`;
     document.getElementById('btn-checkin').disabled = true;
     if (todayData.checkedOut) {
       state.checkedOutToday = true;
       document.getElementById('btn-checkout').disabled = true;
       document.getElementById('checkin-status-text').textContent =
-        `เช็คอิน ${formatTime(todayData.timeIn)} / ออก ${formatTime(todayData.timeOut)}`;
+        `à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™ ${formatTime(todayData.timeIn)} / à¸­à¸­à¸ ${formatTime(todayData.timeOut)}`;
     }
   } else {
-    document.getElementById('checkin-status-text').textContent = 'ยังไม่ได้เช็คอิน';
+    document.getElementById('checkin-status-text').textContent = 'à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹„à¸”à¹‰à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™';
   }
 
   // Monthly summary
   const summary = await api('getMonthlySummary', { userId: state.userId });
-  document.getElementById('sum-present').textContent = summary.present ?? '—';
-  document.getElementById('sum-late').textContent = summary.late ?? '—';
-  document.getElementById('sum-leave-bal').textContent = (summary.leaveBalance ?? '—') + ' วัน';
-  document.getElementById('sum-ot-pending').textContent = (summary.otPending ?? '—') + ' รายการ';
-  document.getElementById('qa-leave-bal').textContent = `วันลาคงเหลือ ${summary.leaveBalance ?? '—'} วัน`;
-  document.getElementById('qa-ot-pending').textContent = `รออนุมัติ ${summary.otPending ?? '—'} รายการ`;
+  document.getElementById('sum-present').textContent = summary.present ?? 'â€”';
+  document.getElementById('sum-late').textContent = summary.late ?? 'â€”';
+  document.getElementById('sum-leave-bal').textContent = (summary.leaveBalance ?? 'â€”') + ' à¸§à¸±à¸™';
+  document.getElementById('sum-ot-pending').textContent = (summary.otPending ?? 'â€”') + ' à¸£à¸²à¸¢à¸à¸²à¸£';
+  document.getElementById('qa-leave-bal').textContent = `à¸§à¸±à¸™à¸¥à¸²à¸„à¸‡à¹€à¸«à¸¥à¸·à¸­ ${summary.leaveBalance ?? 'â€”'} à¸§à¸±à¸™`;
+  document.getElementById('qa-ot-pending').textContent = `à¸£à¸­à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´ ${summary.otPending ?? 'â€”'} à¸£à¸²à¸¢à¸à¸²à¸£`;
 
   // Recent
   const recent = await api('getRecentAttendance', { userId: state.userId, limit: 5 });
@@ -1190,29 +1190,29 @@ async function loadHome() {
 function renderRecent(records) {
   const el = document.getElementById('recent-list');
   if (!records.length) {
-    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">ยังไม่มีข้อมูล</div>';
+    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸‚à¹‰à¸­à¸¡à¸¹à¸¥</div>';
     return;
   }
   el.innerHTML = records.map(r => {
     const d = new Date(r.date);
-    const badge = r.status === 'ปกติ' ? 'badge-ok' :
-                  r.status === 'สาย' ? 'badge-late' :
-                  r.status === 'ลา' ? 'badge-leave' : 'badge-absent';
-    const timeStr = r.leaveType ? r.leaveType : `${formatTime(r.timeIn)} — ${formatTime(r.timeOut)}`;
-    const locStr = r.leaveType ? (r.leaveApproved ? 'อนุมัติแล้ว' : 'รออนุมัติ') : (r.workplace || 'สำนักงาน');
+    const badge = r.status === 'à¸›à¸à¸•à¸´' ? 'badge-ok' :
+                  r.status === 'à¸ªà¸²à¸¢' ? 'badge-late' :
+                  r.status === 'à¸¥à¸²' ? 'badge-leave' : 'badge-absent';
+    const timeStr = r.leaveType ? r.leaveType : `${formatTime(r.timeIn)} â€” ${formatTime(r.timeOut)}`;
+    const locStr = r.leaveType ? (r.leaveApproved ? 'à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´à¹à¸¥à¹‰à¸§' : 'à¸£à¸­à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´') : (r.workplace || 'à¸ªà¸³à¸™à¸±à¸à¸‡à¸²à¸™');
     return `<div class="recent-item">
       <div class="ri-date"><div class="ri-day">${d.getDate()}</div><div class="ri-dow">${THAI_DAYS[d.getDay()]}</div></div>
-      <div class="ri-info"><div class="ri-time">${timeStr}</div><div class="ri-loc">📍 ${locStr}</div></div>
+      <div class="ri-info"><div class="ri-time">${timeStr}</div><div class="ri-loc">ðŸ“ ${locStr}</div></div>
       <span class="badge ${badge}">${r.status}</span>
     </div>`;
   }).join('');
 }
 
-/* ─── Check In / Out ────────────────────────────────── */
+/* â”€â”€â”€ Check In / Out â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 async function doCheckIn() {
-  if (!state.gpsInRange) { showToast('⚠️ GPS อยู่นอกรัศมีที่กำหนด'); return; }
+  if (!state.gpsInRange) { showToast('âš ï¸ GPS à¸­à¸¢à¸¹à¹ˆà¸™à¸­à¸à¸£à¸±à¸¨à¸¡à¸µà¸—à¸µà¹ˆà¸à¸³à¸«à¸™à¸”'); return; }
   document.getElementById('btn-checkin').disabled = true;
-  document.getElementById('btn-checkin').textContent = 'กำลังบันทึก...';
+  document.getElementById('btn-checkin').textContent = 'à¸à¸³à¸¥à¸±à¸‡à¸šà¸±à¸™à¸—à¸¶à¸...';
   try {
     const res = await postApi({
       action: 'checkIn',
@@ -1221,23 +1221,23 @@ async function doCheckIn() {
       lng: state.gpsLng,
     });
     if (res.success) {
-      showToast(`✅ เช็คอินสำเร็จ เวลา ${res.timeIn}`);
+      showToast(`âœ… à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™à¸ªà¸³à¹€à¸£à¹‡à¸ˆ à¹€à¸§à¸¥à¸² ${res.timeIn}`);
       state.checkedInToday = true;
       state.checkInTime = res.timeIn;
-      document.getElementById('checkin-status-text').textContent = `เช็คอินแล้ว เวลา ${res.timeIn}`;
+      document.getElementById('checkin-status-text').textContent = `à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™à¹à¸¥à¹‰à¸§ à¹€à¸§à¸¥à¸² ${res.timeIn}`;
     } else {
-      showToast('❌ เกิดข้อผิดพลาด: ' + res.message);
+      showToast('âŒ à¹€à¸à¸´à¸”à¸‚à¹‰à¸­à¸œà¸´à¸”à¸žà¸¥à¸²à¸”: ' + res.message);
       document.getElementById('btn-checkin').disabled = false;
     }
   } catch {
-    showToast('❌ ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้');
+    showToast('âŒ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­à¹€à¸‹à¸´à¸£à¹Œà¸Ÿà¹€à¸§à¸­à¸£à¹Œà¹„à¸”à¹‰');
     document.getElementById('btn-checkin').disabled = false;
   }
-  document.getElementById('btn-checkin').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> เช็คอิน — บันทึกเวลาเข้างาน`;
+  document.getElementById('btn-checkin').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™ â€” à¸šà¸±à¸™à¸—à¸¶à¸à¹€à¸§à¸¥à¸²à¹€à¸‚à¹‰à¸²à¸‡à¸²à¸™`;
 }
 
 async function doCheckOut() {
-  if (!state.checkedInToday) { showToast('⚠️ ยังไม่ได้เช็คอินวันนี้'); return; }
+  if (!state.checkedInToday) { showToast('âš ï¸ à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹„à¸”à¹‰à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™à¸§à¸±à¸™à¸™à¸µà¹‰'); return; }
   document.getElementById('btn-checkout').disabled = true;
   try {
     const res = await postApi({
@@ -1247,25 +1247,25 @@ async function doCheckOut() {
       lng: state.gpsLng,
     });
     if (res.success) {
-      showToast(`✅ เช็คเอาท์สำเร็จ เวลา ${res.timeOut}`);
+      showToast(`âœ… à¹€à¸Šà¹‡à¸„à¹€à¸­à¸²à¸—à¹Œà¸ªà¸³à¹€à¸£à¹‡à¸ˆ à¹€à¸§à¸¥à¸² ${res.timeOut}`);
       document.getElementById('checkin-status-text').textContent =
-        `เช็คอิน ${formatTime(state.checkInTime)} / ออก ${res.timeOut}`;
+        `à¹€à¸Šà¹‡à¸„à¸­à¸´à¸™ ${formatTime(state.checkInTime)} / à¸­à¸­à¸ ${res.timeOut}`;
     } else {
-      showToast('❌ ' + res.message);
+      showToast('âŒ ' + res.message);
       document.getElementById('btn-checkout').disabled = false;
     }
   } catch {
-    showToast('❌ ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้');
+    showToast('âŒ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­à¹€à¸‹à¸´à¸£à¹Œà¸Ÿà¹€à¸§à¸­à¸£à¹Œà¹„à¸”à¹‰');
     document.getElementById('btn-checkout').disabled = false;
   }
 }
 
-/* ─── History ────────────────────────────────────────── */
+/* â”€â”€â”€ History â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 async function loadHistory() {
   document.getElementById('hist-month-label').textContent =
     `${THAI_MONTHS_FULL[state.histMonth - 1]} ${state.histYear + 543}`;
   document.getElementById('hist-tbody').innerHTML =
-    '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">กำลังโหลด...</td></tr>';
+    '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">à¸à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”...</td></tr>';
 
   const data = await api('getMonthlyHistory', {
     userId: state.userId,
@@ -1274,10 +1274,10 @@ async function loadHistory() {
   });
 
   const records = data.records || [];
-  const present = records.filter(r => r.status === 'ปกติ' || r.status === 'สาย').length;
-  const late = records.filter(r => r.status === 'สาย').length;
-  const leave = records.filter(r => r.status === 'ลา').length;
-  const absent = records.filter(r => r.status === 'ขาดงาน').length;
+  const present = records.filter(r => r.status === 'à¸›à¸à¸•à¸´' || r.status === 'à¸ªà¸²à¸¢').length;
+  const late = records.filter(r => r.status === 'à¸ªà¸²à¸¢').length;
+  const leave = records.filter(r => r.status === 'à¸¥à¸²').length;
+  const absent = records.filter(r => r.status === 'à¸‚à¸²à¸”à¸‡à¸²à¸™').length;
 
   document.getElementById('h-present').textContent = present;
   document.getElementById('h-late').textContent = late;
@@ -1286,19 +1286,19 @@ async function loadHistory() {
 
   if (!records.length) {
     document.getElementById('hist-tbody').innerHTML =
-      '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">ไม่พบข้อมูล</td></tr>';
+      '<tr><td colspan="4" style="text-align:center;color:var(--text-3);padding:16px;">à¹„à¸¡à¹ˆà¸žà¸šà¸‚à¹‰à¸­à¸¡à¸¹à¸¥</td></tr>';
     return;
   }
 
   document.getElementById('hist-tbody').innerHTML = records.map(r => {
     const d = new Date(r.date);
     const dayLabel = `${d.getDate()} ${THAI_MONTHS[d.getMonth()]}`;
-    const badge = r.status === 'ปกติ' ? 'badge-ok' :
-                  r.status === 'สาย' ? 'badge-late' :
-                  r.status === 'ลา' ? 'badge-leave' :
-                  r.status === 'หยุด' ? '' : 'badge-absent';
-    const timeIn = r.timeIn ? formatTime(r.timeIn) : (r.status === 'ลา' ? '—' : '—');
-    const timeOut = r.timeOut ? formatTime(r.timeOut) : '—';
+    const badge = r.status === 'à¸›à¸à¸•à¸´' ? 'badge-ok' :
+                  r.status === 'à¸ªà¸²à¸¢' ? 'badge-late' :
+                  r.status === 'à¸¥à¸²' ? 'badge-leave' :
+                  r.status === 'à¸«à¸¢à¸¸à¸”' ? '' : 'badge-absent';
+    const timeIn = r.timeIn ? formatTime(r.timeIn) : (r.status === 'à¸¥à¸²' ? 'â€”' : 'â€”');
+    const timeOut = r.timeOut ? formatTime(r.timeOut) : 'â€”';
     return `<tr>
       <td class="muted">${dayLabel}</td>
       <td>${timeIn}</td>
@@ -1315,7 +1315,7 @@ function changeMonth(delta) {
   loadHistory();
 }
 
-/* ─── Request Form ───────────────────────────────────── */
+/* â”€â”€â”€ Request Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function switchForm(type) {
   ['leave','ot'].forEach(t => {
     document.getElementById('form-' + t).classList.toggle('active', t === type);
@@ -1334,11 +1334,11 @@ async function submitLeave() {
   const endDate   = document.getElementById('leave-end').value;
   const reason    = document.getElementById('leave-reason').value.trim();
 
-  if (!leaveType || !startDate || !endDate) { showToast('⚠️ กรุณากรอกข้อมูลให้ครบ'); return; }
-  if (new Date(endDate) < new Date(startDate)) { showToast('⚠️ วันสิ้นสุดต้องไม่ก่อนวันเริ่มต้น'); return; }
+  if (!leaveType || !startDate || !endDate) { showToast('âš ï¸ à¸à¸£à¸¸à¸“à¸²à¸à¸£à¸­à¸à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¹ƒà¸«à¹‰à¸„à¸£à¸š'); return; }
+  if (new Date(endDate) < new Date(startDate)) { showToast('âš ï¸ à¸§à¸±à¸™à¸ªà¸´à¹‰à¸™à¸ªà¸¸à¸”à¸•à¹‰à¸­à¸‡à¹„à¸¡à¹ˆà¸à¹ˆà¸­à¸™à¸§à¸±à¸™à¹€à¸£à¸´à¹ˆà¸¡à¸•à¹‰à¸™'); return; }
 
   const btn = document.querySelector('.btn-submit.leave-submit');
-  btn.disabled = true; btn.textContent = 'กำลังส่ง...';
+  btn.disabled = true; btn.textContent = 'à¸à¸³à¸¥à¸±à¸‡à¸ªà¹ˆà¸‡...';
 
   try {
     const res = await postApi({
@@ -1347,18 +1347,18 @@ async function submitLeave() {
       leaveType, startDate, endDate, reason,
     });
     if (res.success) {
-      showToast('✅ ส่งคำขอลางานสำเร็จ');
+      showToast('âœ… à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­à¸¥à¸²à¸‡à¸²à¸™à¸ªà¸³à¹€à¸£à¹‡à¸ˆ');
       document.getElementById('leave-start').value = '';
       document.getElementById('leave-end').value = '';
       document.getElementById('leave-reason').value = '';
       loadRequests();
     } else {
-      showToast('❌ ' + res.message);
+      showToast('âŒ ' + res.message);
     }
-  } catch { showToast('❌ เกิดข้อผิดพลาดในการเชื่อมต่อ'); }
+  } catch { showToast('âŒ à¹€à¸à¸´à¸”à¸‚à¹‰à¸­à¸œà¸´à¸”à¸žà¸¥à¸²à¸”à¹ƒà¸™à¸à¸²à¸£à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­'); }
 
   btn.disabled = false;
-  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> ส่งคำขอลางาน`;
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­à¸¥à¸²à¸‡à¸²à¸™`;
 }
 
 async function submitOT() {
@@ -1367,10 +1367,10 @@ async function submitOT() {
   const end     = document.getElementById('ot-end').value;
   const purpose = document.getElementById('ot-purpose').value.trim();
 
-  if (!date || !start || !end || !purpose) { showToast('⚠️ กรุณากรอกข้อมูลให้ครบ'); return; }
+  if (!date || !start || !end || !purpose) { showToast('âš ï¸ à¸à¸£à¸¸à¸“à¸²à¸à¸£à¸­à¸à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¹ƒà¸«à¹‰à¸„à¸£à¸š'); return; }
 
   const btn = document.querySelector('.btn-submit.ot-submit');
-  btn.disabled = true; btn.textContent = 'กำลังส่ง...';
+  btn.disabled = true; btn.textContent = 'à¸à¸³à¸¥à¸±à¸‡à¸ªà¹ˆà¸‡...';
 
   try {
     const res = await postApi({
@@ -1379,19 +1379,19 @@ async function submitOT() {
       date, startTime: start, endTime: end, purpose,
     });
     if (res.success) {
-      showToast('✅ ส่งคำขอ OT สำเร็จ');
+      showToast('âœ… à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­ OT à¸ªà¸³à¹€à¸£à¹‡à¸ˆ');
       document.getElementById('ot-date').value = '';
       document.getElementById('ot-start').value = '';
       document.getElementById('ot-end').value = '';
       document.getElementById('ot-purpose').value = '';
       loadRequests();
     } else {
-      showToast('❌ ' + res.message);
+      showToast('âŒ ' + res.message);
     }
-  } catch { showToast('❌ เกิดข้อผิดพลาดในการเชื่อมต่อ'); }
+  } catch { showToast('âŒ à¹€à¸à¸´à¸”à¸‚à¹‰à¸­à¸œà¸´à¸”à¸žà¸¥à¸²à¸”à¹ƒà¸™à¸à¸²à¸£à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­'); }
 
   btn.disabled = false;
-  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> ส่งคำขอ OT`;
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> à¸ªà¹ˆà¸‡à¸„à¸³à¸‚à¸­ OT`;
 }
 
 async function loadRequests() {
@@ -1399,7 +1399,7 @@ async function loadRequests() {
   const items = data.requests || [];
   const el = document.getElementById('request-list');
   if (!items.length) {
-    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">ยังไม่มีคำขอ</div>';
+    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸„à¸³à¸‚à¸­</div>';
     return;
   }
   el.innerHTML = items.map(r => {
@@ -1408,12 +1408,12 @@ async function loadRequests() {
     const icon = isLeave
       ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`
       : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-    const badge = r.status === 'อนุมัติ' ? 'badge-approved' :
-                  r.status === 'ปฏิเสธ' ? 'badge-rejected' : 'badge-pending';
-    const title = isLeave ? `${r.leaveType} — ${thaiDate(r.startDate)}` : `OT — ${r.startTime}–${r.endTime}`;
+    const badge = r.status === 'à¸­à¸™à¸¸à¸¡à¸±à¸•à¸´' ? 'badge-approved' :
+                  r.status === 'à¸›à¸à¸´à¹€à¸ªà¸˜' ? 'badge-rejected' : 'badge-pending';
+    const title = isLeave ? `${r.leaveType} â€” ${thaiDate(r.startDate)}` : `OT â€” ${r.startTime}â€“${r.endTime}`;
     const sub   = isLeave
-      ? `${r.days} วัน · ${r.approvedBy ? 'โดย ' + r.approvedBy : 'รอผู้จัดการ'}`
-      : `${thaiDate(r.date)} · ${r.approvedBy ? 'โดย ' + r.approvedBy : 'รอผู้จัดการ'}`;
+      ? `${r.days} à¸§à¸±à¸™ Â· ${r.approvedBy ? 'à¹‚à¸”à¸¢ ' + r.approvedBy : 'à¸£à¸­à¸œà¸¹à¹‰à¸ˆà¸±à¸”à¸à¸²à¸£'}`
+      : `${thaiDate(r.date)} Â· ${r.approvedBy ? 'à¹‚à¸”à¸¢ ' + r.approvedBy : 'à¸£à¸­à¸œà¸¹à¹‰à¸ˆà¸±à¸”à¸à¸²à¸£'}`;
     return `<div class="request-item">
       <div class="ri-icon ${iconClass}">${icon}</div>
       <div class="ri-body"><div class="ri-title">${title}</div><div class="ri-sub">${sub}</div></div>
@@ -1422,7 +1422,7 @@ async function loadRequests() {
   }).join('');
 }
 
-/* ─── Set today's date in forms ─────────────────────── */
+/* â”€â”€â”€ Set today's date in forms â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function prefillForms() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('leave-start').value = today;
@@ -1432,7 +1432,7 @@ function prefillForms() {
   document.getElementById('ot-end').value       = '21:00';
 }
 
-/* ─── Init LIFF ──────────────────────────────────────── */
+/* â”€â”€â”€ Init LIFF â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function showApp() {
   startClock();
   prefillForms();
@@ -1447,7 +1447,7 @@ function showApp() {
       state.dept     = userInfo.dept     || '';
       state.position = userInfo.position || '';
       document.getElementById('home-dept').textContent =
-        [state.position, state.dept].filter(Boolean).join(' · ') || '—';
+        [state.position, state.dept].filter(Boolean).join(' Â· ') || 'â€”';
     } catch (e) { console.warn('getUserInfo failed:', e); }
     try { await loadHome(); } catch (e) { console.warn('loadHome error:', e); }
   })();
@@ -1462,15 +1462,15 @@ async function initApp() {
   try {
     assertConfigured();
     assertLiffEndpointHost();
-    setStatus('กำลังเชื่อมต่อ LINE...');
+    setStatus('à¸à¸³à¸¥à¸±à¸‡à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­ LINE...');
     await Promise.race([
       liff.init({ liffId: LIFF_ID }),
       new Promise((_, rej) => setTimeout(() => rej(new Error('liff.init timeout 15s')), 15000))
     ]);
-    setStatus('กำลังตรวจสอบ session...');
+    setStatus('à¸à¸³à¸¥à¸±à¸‡à¸•à¸£à¸§à¸ˆà¸ªà¸­à¸š session...');
 
     if (!liff.isLoggedIn()) {
-      setStatus('กำลัง redirect ไป login...');
+      setStatus('à¸à¸³à¸¥à¸±à¸‡ redirect à¹„à¸› login...');
       liff.login();
       return;
     }
@@ -1491,7 +1491,7 @@ async function initApp() {
     console.warn('LIFF init failed:', errMsg);
     setStatus(
       'LIFF error: ' + errMsg +
-      ' | ตรวจสอบ LIFF Endpoint URL ให้ตรงกับ GitHub Pages URL: ' +
+      ' | à¸•à¸£à¸§à¸ˆà¸ªà¸­à¸š LIFF Endpoint URL à¹ƒà¸«à¹‰à¸•à¸£à¸‡à¸à¸±à¸š GitHub Pages URL: ' +
       location.origin + location.pathname
     );
   }
