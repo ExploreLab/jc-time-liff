@@ -1024,6 +1024,15 @@
             <div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>
           </div>
         </div>
+        <div class="approval-section">
+          <div class="approval-head">
+            <div class="approval-title">ประวัติอนุมัติล่าสุด</div>
+            <div class="approval-count" id="approval-history-count">0</div>
+          </div>
+          <div id="approval-history-list">
+            <div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1528,24 +1537,31 @@ async function loadAdminApprovals() {
 
   const leaveList = document.getElementById('pending-leave-list');
   const otList = document.getElementById('pending-ot-list');
+  const historyList = document.getElementById('approval-history-list');
   leaveList.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>';
   otList.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>';
+  historyList.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">กำลังโหลด...</div>';
 
   try {
-    const [leaveData, otData] = await Promise.all([
+    const [leaveData, otData, historyData] = await Promise.all([
       api('getPendingLeave', { userId: state.userId }),
       api('getPendingOT', { userId: state.userId }),
+      api('getApprovalHistory', { userId: state.userId, limit: 20 }),
     ]);
     const leaves = leaveData.requests || [];
     const ots = otData.requests || [];
+    const history = historyData.history || [];
     document.getElementById('pending-leave-count').textContent = leaves.length;
     document.getElementById('pending-ot-count').textContent = ots.length;
+    document.getElementById('approval-history-count').textContent = history.length;
     renderPendingLeaves(leaves);
     renderPendingOT(ots);
+    renderApprovalHistory(history);
   } catch (e) {
     console.warn('loadAdminApprovals failed:', e);
     leaveList.innerHTML = '<div style="color:var(--danger);font-size:13px;padding:8px 0;">โหลดรายการลางานไม่ได้</div>';
     otList.innerHTML = '<div style="color:var(--danger);font-size:13px;padding:8px 0;">โหลดรายการ OT ไม่ได้</div>';
+    historyList.innerHTML = '<div style="color:var(--danger);font-size:13px;padding:8px 0;">โหลดประวัติอนุมัติไม่ได้</div>';
   }
 }
 
@@ -1581,6 +1597,26 @@ function renderPendingOT(items) {
       <button class="approval-btn reject" onclick="decideRequest('ot','${r.otId}','reject',this)">ปฏิเสธ</button>
     </div>
   </div>`).join('');
+}
+
+function renderApprovalHistory(items) {
+  const el = document.getElementById('approval-history-list');
+  if (!items.length) {
+    el.innerHTML = '<div style="color:var(--text-3);font-size:13px;padding:8px 0;">ยังไม่มีประวัติอนุมัติ</div>';
+    return;
+  }
+  el.innerHTML = items.map(r => {
+    const badge = r.status === 'อนุมัติ' ? 'badge-approved' : 'badge-rejected';
+    const typeLabel = r.type === 'leave' ? 'ลา' : 'OT';
+    const note = r.note ? `<div class="approval-reason">หมายเหตุ: ${r.note}</div>` : '';
+    return `<div class="approval-item">
+      <div class="ri-title">${r.userName || '—'} · ${typeLabel} · ${r.title || '—'}</div>
+      <div class="approval-meta">${r.dept || '—'} · ${r.dateLabel || '—'} · โดย ${r.approvedBy || '—'} · ${r.approvedAt || '—'}</div>
+      ${r.detail ? `<div class="approval-reason">${r.detail}</div>` : ''}
+      ${note}
+      <div style="margin-top:8px;"><span class="badge ${badge}">${r.status}</span></div>
+    </div>`;
+  }).join('');
 }
 
 async function decideRequest(type, id, decision, btn) {
