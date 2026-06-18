@@ -333,6 +333,91 @@
     .sc-value.blue  { color: var(--info-dark); }
     .sc-value.red   { color: var(--danger-dark); }
 
+    .admin-dashboard { display: none; }
+    .admin-dashboard.show { display: block; }
+    .dash-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .dash-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .dash-month {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand);
+      background: #e8f1f8;
+      border-radius: 999px;
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+    .dash-metric {
+      background: var(--surface2);
+      border-radius: var(--radius-sm);
+      padding: 10px 11px;
+      min-height: 72px;
+    }
+    .dash-label {
+      color: var(--text-3);
+      font-size: 10px;
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .dash-value {
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.05;
+    }
+    .dash-value.green { color: var(--accent-dark); }
+    .dash-value.amber { color: var(--warn-dark); }
+    .dash-value.blue { color: var(--info-dark); }
+    .dash-value.red { color: var(--danger-dark); }
+    .dash-list {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .dash-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .dash-row:last-child { border-bottom: none; }
+    .dash-row-main {
+      min-width: 0;
+      color: var(--text);
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .dash-row-sub {
+      margin-top: 2px;
+      color: var(--text-3);
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .dash-row-num {
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
     /* ─── Quick Actions ────────────────────────────────── */
     .qa-grid {
       display: grid;
@@ -900,6 +985,44 @@
         </div>
       </div>
 
+      <!-- Admin Monthly Dashboard -->
+      <div class="card admin-dashboard" id="admin-dashboard-card">
+        <div class="dash-head">
+          <div class="dash-title">ภาพรวมทีมเดือนนี้</div>
+          <div class="dash-month" id="admin-dash-month">—</div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-metric">
+            <div class="dash-label">พนักงานทั้งหมด</div>
+            <div class="dash-value blue" id="dash-employees">—</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-label">มาทำงาน</div>
+            <div class="dash-value green" id="dash-present">—</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-label">มาสาย</div>
+            <div class="dash-value amber" id="dash-late">—</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-label">ลา / ขาดงาน</div>
+            <div class="dash-value red" id="dash-leave-absent">—</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-label">คำขอรออนุมัติ</div>
+            <div class="dash-value amber" id="dash-pending">—</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-label">OT อนุมัติแล้ว</div>
+            <div class="dash-value blue" id="dash-ot-hours">—</div>
+          </div>
+        </div>
+        <div class="dash-list" id="dash-dept-list">
+          <div style="color:var(--text-3);font-size:12px;padding:10px 0;">กำลังโหลด...</div>
+        </div>
+        <div class="dash-list" id="dash-late-list"></div>
+      </div>
+
       <!-- Quick Actions -->
       <div>
         <div class="section-label" style="margin-bottom:10px;">เมนูด่วน</div>
@@ -1161,6 +1284,8 @@ const state = {
   currentPage: 'home',
   histMonth: new Date().getMonth() + 1,
   histYear: new Date().getFullYear(),
+  adminDashMonth: new Date().getMonth() + 1,
+  adminDashYear: new Date().getFullYear(),
   gpsLat: null,
   gpsLng: null,
   gpsInRange: false,
@@ -1407,9 +1532,82 @@ async function loadHome() {
   document.getElementById('qa-leave-bal').textContent = `วันลาคงเหลือ ${summary.leaveBalance ?? '—'} วัน`;
   document.getElementById('qa-ot-pending').textContent = `รออนุมัติ ${summary.otPending ?? '—'} รายการ`;
 
+  await loadAdminDashboard();
+
   // Recent
   const recent = await api('getRecentAttendance', { userId: state.userId, limit: 5 });
   renderRecent(recent.records || []);
+}
+
+async function loadAdminDashboard() {
+  const card = document.getElementById('admin-dashboard-card');
+  if (!card) return;
+  card.classList.toggle('show', !!state.isAdmin);
+  if (!state.isAdmin) return;
+
+  document.getElementById('admin-dash-month').textContent =
+    `${THAI_MONTHS_FULL[state.adminDashMonth - 1]} ${state.adminDashYear + 543}`;
+  document.getElementById('dash-dept-list').innerHTML =
+    '<div style="color:var(--text-3);font-size:12px;padding:10px 0;">กำลังโหลด...</div>';
+  document.getElementById('dash-late-list').innerHTML = '';
+
+  try {
+    const data = await api('getAdminMonthlyDashboard', {
+      userId: state.userId,
+      month: state.adminDashMonth,
+      year: state.adminDashYear,
+    });
+    renderAdminDashboard(data);
+  } catch (e) {
+    console.warn('loadAdminDashboard failed:', e);
+    document.getElementById('dash-dept-list').innerHTML =
+      '<div style="color:var(--danger);font-size:12px;padding:10px 0;">โหลดภาพรวมรายเดือนไม่ได้</div>';
+  }
+}
+
+function renderAdminDashboard(data) {
+  const totals = data.totals || {};
+  document.getElementById('dash-employees').textContent = totals.employees ?? '—';
+  document.getElementById('dash-present').textContent = totals.present ?? '—';
+  document.getElementById('dash-late').textContent = totals.late ?? '—';
+  document.getElementById('dash-leave-absent').textContent =
+    `${totals.leave ?? 0}/${totals.absent ?? 0}`;
+  document.getElementById('dash-pending').textContent =
+    `${(totals.pendingLeave ?? 0) + (totals.pendingOT ?? 0)}`;
+  document.getElementById('dash-ot-hours').textContent =
+    `${totals.approvedOTHours ?? 0} ชม.`;
+
+  const deptList = document.getElementById('dash-dept-list');
+  const departments = data.departments || [];
+  if (!departments.length) {
+    deptList.innerHTML = '<div style="color:var(--text-3);font-size:12px;padding:10px 0;">ยังไม่มีข้อมูลรายแผนกในเดือนนี้</div>';
+  } else {
+    deptList.innerHTML = departments.map(d => `
+      <div class="dash-row">
+        <div>
+          <div class="dash-row-main">${d.dept || 'ไม่ระบุแผนก'}</div>
+          <div class="dash-row-sub">พนักงาน ${d.employees || 0} · สาย ${d.late || 0} · ลา ${d.leave || 0} · ขาด ${d.absent || 0}</div>
+        </div>
+        <div class="dash-row-num">${d.present || 0} วัน</div>
+      </div>
+    `).join('');
+  }
+
+  const lateList = document.getElementById('dash-late-list');
+  const topLate = data.topLate || [];
+  if (!topLate.length) {
+    lateList.innerHTML = '<div style="color:var(--text-3);font-size:12px;padding:10px 0;">เดือนนี้ยังไม่มีรายการมาสาย</div>';
+  } else {
+    lateList.innerHTML = topLate.map(u => `
+      <div class="dash-row">
+        <div>
+          <div class="dash-row-main">${u.name || 'ไม่พบชื่อ'}</div>
+          <div class="dash-row-sub">${u.dept || 'ไม่ระบุแผนก'}</div>
+        </div>
+        <div class="dash-row-num">สาย ${u.late || 0}</div>
+      </div>
+    `).join('');
+  }
 }
 
 function renderRecent(records) {
