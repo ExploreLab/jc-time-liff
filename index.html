@@ -708,6 +708,45 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ─── Registration Overlay ─────────────────────────── */
+    #register-panel {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      z-index: 80;
+      display: none;
+      overflow-y: auto;
+      padding: calc(env(safe-area-inset-top, 20px) + 18px) 18px calc(24px + var(--safe-bottom));
+    }
+    #register-panel.show { display: block; }
+    .register-head {
+      background: var(--brand);
+      color: #fff;
+      margin: -18px -18px 18px;
+      padding: calc(env(safe-area-inset-top, 20px) + 18px) 18px 22px;
+    }
+    .register-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .register-sub {
+      color: rgba(255,255,255,0.68);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .register-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+    .register-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
     /* ─── Bottom Nav ───────────────────────────────────── */
     .bottom-nav {
       position: absolute;
@@ -767,6 +806,31 @@
 
   <!-- Toast -->
   <div id="toast"></div>
+
+  <!-- First-time registration -->
+  <div id="register-panel">
+    <div class="register-head">
+      <div class="register-title">ลงทะเบียนพนักงาน</div>
+      <div class="register-sub">ระบบยังไม่พบข้อมูลพนักงานของบัญชี LINE นี้ กรุณากรอกข้อมูลพื้นฐานเพื่อเริ่มใช้งาน JC-Time</div>
+    </div>
+    <div class="register-card">
+      <div class="form-field">
+        <div class="form-label">ชื่อ-นามสกุล</div>
+        <input class="form-control" id="reg-name" autocomplete="name" />
+      </div>
+      <div class="form-field">
+        <div class="form-label">แผนก</div>
+        <input class="form-control" id="reg-dept" placeholder="เช่น ฝ่ายปฏิบัติการ" />
+      </div>
+      <div class="form-field">
+        <div class="form-label">ตำแหน่ง</div>
+        <input class="form-control" id="reg-position" placeholder="เช่น พนักงาน" />
+      </div>
+      <div class="register-actions">
+        <button class="btn-submit leave-submit" id="btn-register" onclick="submitRegistration()">บันทึกข้อมูลพนักงาน</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════════════
        PAGE: HOME
@@ -1104,6 +1168,7 @@ const state = {
   checkedOutToday: false,
   checkInTime: null,
   isAdmin: false,
+  registered: false,
 };
 
 /* ─── Helpers ───────────────────────────────────────── */
@@ -1154,6 +1219,17 @@ function showToast(msg, duration = 2800) {
   setTimeout(() => el.classList.remove('show'), duration);
 }
 
+function showRegistration() {
+  document.getElementById('reg-name').value = state.displayName || '';
+  document.getElementById('reg-dept').value = state.dept || '';
+  document.getElementById('reg-position').value = state.position || '';
+  document.getElementById('register-panel')?.classList.add('show');
+}
+
+function hideRegistration() {
+  document.getElementById('register-panel')?.classList.remove('show');
+}
+
 function fetchWithTimeout(url, options = {}, ms = 10000) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), ms);
@@ -1176,6 +1252,49 @@ function postApi(payload) {
   url.searchParams.set('action', payload.action);
   url.searchParams.set('data', JSON.stringify(payload));
   return fetchWithTimeout(url.toString());
+}
+
+async function submitRegistration() {
+  const name = document.getElementById('reg-name').value.trim();
+  const dept = document.getElementById('reg-dept').value.trim();
+  const position = document.getElementById('reg-position').value.trim();
+  if (!name) { showToast('กรุณากรอกชื่อ-นามสกุล'); return; }
+
+  const btn = document.getElementById('btn-register');
+  btn.disabled = true;
+  btn.textContent = 'กำลังบันทึก...';
+  try {
+    const res = await postApi({
+      action: 'registerUser',
+      userId: state.userId,
+      name,
+      dept,
+      position,
+      role: 'Employee',
+      canApprove: false,
+    });
+    if (!res.success) {
+      showToast(res.message || 'ลงทะเบียนไม่สำเร็จ');
+      return;
+    }
+
+    state.displayName = name;
+    state.dept = dept;
+    state.position = position;
+    state.isAdmin = false;
+    state.registered = true;
+    document.getElementById('home-username').textContent = name;
+    document.getElementById('home-dept').textContent = [position, dept].filter(Boolean).join(' · ') || '—';
+    hideRegistration();
+    showToast('ลงทะเบียนสำเร็จ');
+    await loadHome();
+  } catch (e) {
+    console.warn('registerUser failed:', e);
+    showToast('ไม่สามารถลงทะเบียนได้');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'บันทึกข้อมูลพนักงาน';
+  }
 }
 
 /* ─── GPS ───────────────────────────────────────────── */
@@ -1676,6 +1795,17 @@ function showApp() {
   (async () => {
     try {
       const userInfo = await api('getUserInfo', { userId: state.userId });
+      if (!userInfo.found) {
+        state.registered = false;
+        state.dept = '';
+        state.position = '';
+        state.isAdmin = false;
+        document.getElementById('home-username').textContent = state.displayName || '—';
+        document.getElementById('home-dept').textContent = 'ยังไม่ได้ลงทะเบียน';
+        showRegistration();
+        return;
+      }
+      state.registered = true;
       state.dept     = userInfo.dept     || '';
       state.position = userInfo.position || '';
       state.isAdmin  = isAdminProfile(userInfo);
