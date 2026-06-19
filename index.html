@@ -862,6 +862,8 @@
     }
     .nav-item .nav-icon { font-size: 22px; }
     .nav-item.active { color: var(--brand); }
+    .nav-admin { display: none; }
+    .nav-admin.show { display: flex; }
     .nav-badge {
       position: relative;
     }
@@ -1224,6 +1226,17 @@
     </div>
   </div>
 
+  <div id="page-admin" class="page">
+    <div class="page-header">
+      <div class="logo" style="margin-bottom:4px;">JC<span style="color:var(--accent);">·</span>Time</div>
+      <div class="page-title">Admin</div>
+      <div class="page-subtitle">ภาพรวมทีม รายการรออนุมัติ และประวัติการดำเนินการ</div>
+    </div>
+    <div class="scroll-content" id="admin-page-content">
+      <div style="color:var(--text-3);font-size:13px;padding:12px 0;text-align:center;">กำลังโหลด...</div>
+    </div>
+  </div>
+
   <!-- Bottom Nav -->
   <nav class="bottom-nav">
     <button class="nav-item active" id="nav-home" onclick="navigate('home')">
@@ -1243,6 +1256,12 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
       </span>
       คำขอ
+    </button>
+    <button class="nav-item nav-admin" id="nav-admin" onclick="navigate('admin')">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v5c0 5-3 9-7 11-4-2-7-6-7-11V6l7-4z"/><path d="M9 12l2 2 4-5"/></svg>
+      </span>
+      Admin
     </button>
   </nav>
 </div>
@@ -1407,6 +1426,7 @@ async function submitRegistration() {
     state.dept = dept;
     state.position = position;
     state.isAdmin = false;
+    updateAdminAccess();
     state.registered = true;
     document.getElementById('home-username').textContent = name;
     document.getElementById('home-dept').textContent = [position, dept].filter(Boolean).join(' · ') || '—';
@@ -1440,6 +1460,10 @@ function getGPS() {
 
 /* ─── Navigation ────────────────────────────────────── */
 function navigate(page) {
+  if (page === 'admin' && !state.isAdmin) {
+    showToast('ไม่มีสิทธิ์เข้าหน้า Admin');
+    page = 'home';
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -1448,11 +1472,36 @@ function navigate(page) {
 
   if (page === 'history') loadHistory();
   if (page === 'request') loadRequests();
+  if (page === 'admin') loadAdminPage();
 }
 
 function navTo(page, tab) {
   navigate(page);
   if (tab) switchForm(tab);
+}
+
+function updateAdminAccess() {
+  document.getElementById('nav-admin')?.classList.toggle('show', !!state.isAdmin);
+  if (!state.isAdmin && state.currentPage === 'admin') navigate('home');
+}
+
+function mountAdminPage() {
+  const target = document.getElementById('admin-page-content');
+  const dashboard = document.getElementById('admin-dashboard-card');
+  const approvals = document.getElementById('admin-approval-card');
+  if (!target || !dashboard || !approvals) return;
+  if (!target.contains(dashboard) && !target.contains(approvals)) target.innerHTML = '';
+  if (dashboard.parentElement !== target) target.appendChild(dashboard);
+  if (approvals.parentElement !== target) target.appendChild(approvals);
+}
+
+async function loadAdminPage() {
+  if (!state.isAdmin) return;
+  mountAdminPage();
+  await Promise.all([
+    loadAdminDashboard(),
+    loadAdminApprovals(),
+  ]);
 }
 
 /* ─── Clock ─────────────────────────────────────────── */
@@ -1531,8 +1580,6 @@ async function loadHome() {
   document.getElementById('sum-ot-pending').textContent = (summary.otPending ?? '—') + ' รายการ';
   document.getElementById('qa-leave-bal').textContent = `วันลาคงเหลือ ${summary.leaveBalance ?? '—'} วัน`;
   document.getElementById('qa-ot-pending').textContent = `รออนุมัติ ${summary.otPending ?? '—'} รายการ`;
-
-  await loadAdminDashboard();
 
   // Recent
   const recent = await api('getRecentAttendance', { userId: state.userId, limit: 5 });
@@ -1998,6 +2045,7 @@ function showApp() {
         state.dept = '';
         state.position = '';
         state.isAdmin = false;
+        updateAdminAccess();
         document.getElementById('home-username').textContent = state.displayName || '—';
         document.getElementById('home-dept').textContent = 'ยังไม่ได้ลงทะเบียน';
         showRegistration();
@@ -2007,7 +2055,8 @@ function showApp() {
       state.dept     = userInfo.dept     || '';
       state.position = userInfo.position || '';
       state.isAdmin  = isAdminProfile(userInfo);
-      document.getElementById('admin-approval-card')?.classList.toggle('show', state.isAdmin);
+      updateAdminAccess();
+      if (state.isAdmin) mountAdminPage();
       document.getElementById('home-dept').textContent =
         [state.position, state.dept].filter(Boolean).join(' · ') || '—';
     } catch (e) { console.warn('getUserInfo failed:', e); }
